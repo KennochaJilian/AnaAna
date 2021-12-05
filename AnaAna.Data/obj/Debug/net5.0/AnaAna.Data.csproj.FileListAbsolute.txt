@@ -1,0 +1,12 @@
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.Data\bin\Debug\net5.0\AnaAna.Data.deps.json
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.Data\bin\Debug\net5.0\AnaAna.Data.dll
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.Data\bin\Debug\net5.0\ref\AnaAna.Data.dll
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.Data\bin\Debug\net5.0\AnaAna.Data.pdb
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.Data\obj\Debug\net5.0\AnaAna.Data.csproj.AssemblyReference.cache
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.Data\obj\Debug\net5.0\AnaAna.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.Data\obj\Debug\net5.0\AnaAna.Data.AssemblyInfoInputs.cache
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.Data\obj\Debug\net5.0\AnaAna.Data.AssemblyInfo.cs
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.Data\obj\Debug\net5.0\AnaAna.Data.csproj.CoreCompileInputs.cache
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.Data\obj\Debug\net5.0\AnaAna.Data.dll
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.Data\obj\Debug\net5.0\ref\AnaAna.Data.dll
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.Data\obj\Debug\net5.0\AnaAna.Data.pdb

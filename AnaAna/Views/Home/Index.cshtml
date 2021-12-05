@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<header id="header-home">
+    <h1> Créer un <span> sondage </span> en quelques secondes </h1>
+    <p>Simple. Vite. Gratuit </p>
+    <div id="header-img">
+        <img src="~/images/home-header-poll.PNG" />
+    </div>
+    <div id="btn-nav" class="d-flex justify-content-between m-auto">
+        <button class="btn btn-primary"> Créer un sondage </button>
+        <a asp-controller="Polls" asp-action="Index" class="btn btn-primary"> Liste des sondages publics </a>
+    </div>    
+</header>
+
+<section id="how-it-works">
+    <h2> Comment ça marche ? </h2>
+
+    <div id="steps-container">
+        <div class="steps">
+            <div class="steps-img"> 
+            <img src="~/images/creation-de-sites-web.png" /> 
+            </div>
+            <div>
+                <h3> 1. Créer</h3>
+                <p>Remplis tes informations.</p>
+            </div>
+        </div>
+        <div class="steps">
+            <div class="steps-img"> 
+                <img src="~/images/partager.png" />
+            </div>
+            <div>
+                <h3> 2. Partager </h3>
+                <p>Envoie le lien à tes participants. </p>
+            </div>
+        </div>
+        <div class="steps">
+            <div class="steps-img"> 
+            <img src="~/images/resultats.png" />    
+            </div>
+            <div>
+                <h3> 3. Obtenir des résultats </h3>
+                <p>Vérifie les résultats en temps réel. </p>
+            </div>
+        </div>
+    </div>
+</section>
+
