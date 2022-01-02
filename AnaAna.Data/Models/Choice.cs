@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AnaAna.Data.Models
 {
-    public class Choice
+    public class Choice : IIncludeObject
     {
         [Key]
         public int Id { get; set; }
@@ -16,5 +16,10 @@ namespace AnaAna.Data.Models
         public string Label { get; set; }
         [Required]
         public Poll Poll { get; set; }
+
+        public List<string> IncludesNeeded()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

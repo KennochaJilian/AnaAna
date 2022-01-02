@@ -9,7 +9,7 @@
         <img src="~/images/home-header-poll.PNG" />
     </div>
     <div id="btn-nav" class="d-flex justify-content-between m-auto">
-        <button class="btn btn-primary"> Créer un sondage </button>
+        <a asp-controller="Polls" asp-action="Create" class="btn btn-primary"> Créer un sondage </a>
         <a asp-controller="Polls" asp-action="Index" class="btn btn-primary"> Liste des sondages publics </a>
     </div>    
 </header>

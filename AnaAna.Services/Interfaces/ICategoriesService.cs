@@ -1,4 +1,5 @@
-﻿using AnaAna.Services.ViewModels;
+﻿using AnaAna.Data.Models;
+using AnaAna.Services.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,9 @@ namespace AnaAna.Services.Interfaces
     {
         Task<List<CategoriesIndexViewModel>> GetAllAsync();
         Task CreateCategoryAsync(AddCategoryViewModel category);
+        Task<List<Category>> GetAllNoVMAsync(); 
+
+        Task <Category> GetOneByIdNoVMAsync(int id);
+
     }
 }

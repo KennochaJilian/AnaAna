@@ -6,9 +6,9 @@
 }
 <h1>Listes des sondages</h1>
 
-@*@foreach (PollsIndexViewModel Poll in Model) {
-  <p>@Poll.Title</p>
+@foreach (PollsIndexViewModel Poll in Model) {
+  <a href="~/Polls/Retrieve/@Poll.Id">@Poll.Title</a>
   <p>@Poll.Description</p>
-}*@
+}
 
 

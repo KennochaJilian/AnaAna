@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AnaAna.Data.Models
 {
-    public class Result
+    public class Result: IIncludeObject
     {
         [Key]
         public int Id { get; set; }
@@ -17,6 +17,11 @@ namespace AnaAna.Data.Models
         [Required]
         public Choice Choice { get; set; }
         [Required]
-        public IdentityUser User { get; set; }
+        public ApplicationUser User { get; set; }
+
+        public List<string> IncludesNeeded()
+        {
+            return new List<string>(); 
+        }
     }
 }

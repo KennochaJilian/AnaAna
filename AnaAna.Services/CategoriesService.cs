@@ -7,6 +7,7 @@ using AnaAna.Services.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,9 +32,42 @@ namespace AnaAna.Services
 
         }
 
-        public Task<List<CategoriesIndexViewModel>> GetAllAsync()
+        public async Task<List<CategoriesIndexViewModel>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var categories = await _repo.GetAllAsync();
+            
+
+            var enumerable = categories.Select(category => new CategoriesIndexViewModel()
+            {
+                Name= category.Name,
+                Id= category.Id
+
+            });
+
+            return enumerable.ToList();
+        }
+
+        public async Task<List<Category>> GetAllNoVMAsync()
+        {
+            var categories = await _repo.GetAllAsync();
+
+
+            //var enumerable = categories.Select(category => new CategoriesIndexViewModel()
+            //{
+            //    Name = category.Name,
+            //    Id = category.Id
+
+            //});
+
+            return categories;
+        }
+
+        public async Task<Category> GetOneByIdNoVMAsync(int id)
+        {
+            PropertyInfo idProperty = typeof(Category).GetProperty("Id");
+            var category = await _repo.GetAsync(x => x.Id == id);
+
+            return category; 
         }
     }
 }

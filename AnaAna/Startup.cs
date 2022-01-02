@@ -6,17 +6,10 @@ using AnaAna.Services;
 using AnaAna.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AnaAna
 {
@@ -37,11 +30,17 @@ namespace AnaAna
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+
             services.AddControllersWithViews();
-            //services.AddScoped<ICategoriesService, CategoriesService>();
-            //services.AddScoped(typeof(IRepositoryGeneric<>), typeof(RepositoryGeneric<>));
+            services.AddScoped<IAnaAnaResultsService, AnaAnaResultsService>(); 
+            services.AddScoped<IChoicesService, ChoicesService>();
+            services.AddScoped<ICategoriesService, CategoriesService>();
+            services.AddScoped<IPollsService, PollsService>();
+            services.AddScoped(typeof(IRepositoryGeneric<>), typeof(RepositoryGeneric<>));
+            services.AddHttpContextAccessor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

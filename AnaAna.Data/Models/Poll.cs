@@ -8,10 +8,10 @@ using Microsoft.AspNetCore.Identity;
 
 namespace AnaAna.Data.Models
 {
-    public class Poll
+    public class Poll : IIncludeObject
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         [Required]
         [StringLength(100)]
         public string Title { get; set; }
@@ -27,11 +27,17 @@ namespace AnaAna.Data.Models
         [Required]
         public bool IsPrivate { get; set; }
         [Required]
-        public IdentityUser CreatedBy { get; set; }
+        public ApplicationUser CreatedBy { get; set; }
         [Required]
         public Category Category { get; set; }
         [Required]
         public bool HasMultipleChoice { get; set; }
 
+        public List<Choice> Choices { get; set; }   
+
+        public List<string> IncludesNeeded()
+        {
+            return new List<string>() {"Category", "Choices" };
+        }
     }
 }

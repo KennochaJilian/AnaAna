@@ -12,40 +12,47 @@ namespace AnaAna.Data.Repositories
 {
     public class RepositoryGeneric<T> : IRepositoryGeneric<T> where T : class, IIncludeObject, new()
     {
-        protected DbContext context;
-        private readonly DbSet<T> dbSet;
+        protected ApplicationDbContext context;
+        protected readonly DbSet<T> dbSet;
 
 
-        public RepositoryGeneric(DbContext dbContextType)
+        public RepositoryGeneric(ApplicationDbContext dbContextType)
         {
             context = dbContextType;
             dbSet = context.Set<T>();
         }
 
-        public List<T> GetAll(Expression<Func<T, bool>> predicate = null)
+        public Task<List<T>> GetAllAsync()
         {
             var query = dbSet.AsQueryable();
             foreach (var include in new T().IncludesNeeded())
             {
                 query = query.Include(include);
             }
-            if (predicate == null)
-            {
-                return query.ToList();
-            }
-            query = query.Where(predicate).AsQueryable();
-            return query.ToList();
+            //if (predicate == null)
+            //{
+            //    return  query.ToListAsync();
+            //}
+            //query = query.Where(predicate).AsQueryable();
+            return query.ToListAsync();
         }
 
-        public T Get(Expression<Func<T, bool>> predicate = null)
+        //public Task<List<T>> FilterByAsync()
+        //{
+        //    var query = dbSet.AsQueryable<T>();
+            
+
+        //}
+
+        public async Task<T> GetAsync(Expression<Func<T,bool>> predicate = null)
         {
-            if (predicate == null) return dbSet.AsQueryable().FirstOrDefault();
+            if (predicate == null) return await dbSet.AsQueryable().FirstOrDefaultAsync();
             var query = dbSet.Where(predicate).AsQueryable();
             foreach (var include in new T().IncludesNeeded())
-            {
+            { 
                 query = query.Include(include);
             }
-            return query.FirstOrDefault();
+            return await query.FirstOrDefaultAsync();
         }
 
         public async Task<T> AddAsync(T obj)
@@ -70,6 +77,12 @@ namespace AnaAna.Data.Repositories
             dbSet.Remove(obj);
             context.SaveChanges();
         }
+
+        public Task<List<T>> FilterByAsync()
+        {
+            throw new NotImplementedException();
+        }
+
 
     }
 }

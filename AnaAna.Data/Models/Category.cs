@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AnaAna.Data.Models
 {
-    public class Category
+    public class Category :IIncludeObject
     {
         [Key]
         public int Id { get; set; }
@@ -15,5 +15,9 @@ namespace AnaAna.Data.Models
         [StringLength(100)]
         public string Name { get; set; }
 
+        public List<string> IncludesNeeded()
+        {
+            return new List<string>(); 
+        }
     }
 }

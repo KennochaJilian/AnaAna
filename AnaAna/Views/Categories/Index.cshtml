@@ -6,9 +6,9 @@
 }
 <h1>Listes des catégories</h1>
 
-@*@foreach (PollsIndexViewModel Poll in Model) {
-  <p>@Poll.Title</p>
-  <p>@Poll.Description</p>
-}*@
+@foreach (CategoriesIndexViewModel category in Model) {
+  <p>@category.Name</p>
+}
+<a asp-controller="Categories" asp-action="Create" class="btn btn-primary"> Créer </a>
 
 
