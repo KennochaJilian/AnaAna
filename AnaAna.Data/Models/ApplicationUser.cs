@@ -8,10 +8,15 @@ using System.Threading.Tasks;
 
 namespace AnaAna.Data.Models
 {
-    public class ApplicationUser : IdentityUser<Guid>
+    public class ApplicationUser : IdentityUser<Guid>, IIncludeObject
     {
 
         [PersonalData]
         public string name { get; set; }
+
+        public List<string> IncludesNeeded()
+        {
+            return new List<string>();
+        }
     }
 }

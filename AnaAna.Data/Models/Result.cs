@@ -21,7 +21,7 @@ namespace AnaAna.Data.Models
 
         public List<string> IncludesNeeded()
         {
-            return new List<string>(); 
+            return new List<string>() { "Choice"}; 
         }
     }
 }

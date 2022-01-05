@@ -10,3 +10,7 @@ const addChoice = () => {
     newInput.type = "text";
     containterChoice.insertBefore(newInput, button);
 }
+
+$(function () {
+    $('[data-toggle="popover"]').popover()
+})

@@ -22,9 +22,10 @@ namespace AnaAna.Data.Repositories
             dbSet = context.Set<T>();
         }
 
-        public Task<List<T>> GetAllAsync()
+        public Task<List<T>> GetAllAsync(Expression<Func<T, bool>> predicate = null)
         {
             var query = dbSet.AsQueryable();
+            if (predicate != null) { query = dbSet.Where(predicate).AsQueryable();}
             foreach (var include in new T().IncludesNeeded())
             {
                 query = query.Include(include);
@@ -46,12 +47,15 @@ namespace AnaAna.Data.Repositories
 
         public async Task<T> GetAsync(Expression<Func<T,bool>> predicate = null)
         {
+            
+            
             if (predicate == null) return await dbSet.AsQueryable().FirstOrDefaultAsync();
             var query = dbSet.Where(predicate).AsQueryable();
             foreach (var include in new T().IncludesNeeded())
             { 
                 query = query.Include(include);
             }
+
             return await query.FirstOrDefaultAsync();
         }
 
@@ -63,7 +67,7 @@ namespace AnaAna.Data.Repositories
             return obj;
         }
 
-        public T Update(T obj)
+        public async Task<T> UpdateAsync(T obj)
         {
             context.Attach(obj);
             dbSet.Update(obj);
@@ -71,16 +75,26 @@ namespace AnaAna.Data.Repositories
             return obj;
         }
 
-        public void Delete(T obj)
+        public async Task DeleteAsync(T obj)
         {
             context.Attach(obj);
             dbSet.Remove(obj);
-            context.SaveChanges();
+            await context.SaveChangesAsync();
         }
 
         public Task<List<T>> FilterByAsync()
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<int> CountByProperty(Expression<Func<T, bool>> predicate)
+        {
+
+
+           
+            var query = dbSet.Where(predicate).Count();
+           
+            return query;
         }
 
 

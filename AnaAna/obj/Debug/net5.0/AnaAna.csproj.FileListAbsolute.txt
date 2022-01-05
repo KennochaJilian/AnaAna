@@ -181,3 +181,4 @@ C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna\bin\Debug\net5.0\M
 C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
 C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna\obj\Debug\net5.0\Razor\Views\Polls\Retrieve.cshtml.g.cs
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna\obj\Debug\net5.0\Razor\Views\Results\Index.cshtml.g.cs

@@ -1,0 +1,18 @@
+﻿@using AnaAna.Services.ViewModels
+
+@model ResultViewModel;
+
+<h1> @Model.PollTitle </h1>
+<p> @Model.PollDescription </p>
+<p> @Model.PollStartedAt </p>
+<p> @Model.PollEndedAt </p>
+
+@foreach (var choice in Model.PollChoices)
+{
+    <p> @choice.Label</p>
+}
+
+<div>
+        <input id="pollId" type="hidden" name="pollId" value="@Model.PollId">
+        <canvas id="result"></canvas>
+</div>

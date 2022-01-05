@@ -21,8 +21,15 @@ namespace AnaAna.Services.ViewModels
 
         public bool UserAlreadyVoted { get; set; }
 
+        public bool userIsCreator { get; set; }
+
+        public bool IsDisabled { get; set; }
+
         public Category Category { get; set; }
 
         public List<Choice> Choices { get; set; }
+        public int nbVoted { get; set; }
+
+        public List<Choice> ChoicesSelected { get; set; }
     }
 }

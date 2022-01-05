@@ -16,27 +16,27 @@ namespace AnaAna.Services
 {
     public class PollsService : IPollsService
     {
-        
+
         private readonly IRepositoryGeneric<Poll> _repo;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IChoicesService _choicesService;
-        private readonly IAnaAnaResultsService _anaAnaResultsService;
+        private readonly IResultsService _anaAnaResultsService;
 
 
         public PollsService(
-            IHttpContextAccessor httpContextAccessor, 
-            IRepositoryGeneric<Poll> repo, 
-            IChoicesService choicesService, 
-            IAnaAnaResultsService resultsService)
+            IHttpContextAccessor httpContextAccessor,
+            IRepositoryGeneric<Poll> repo,
+            IChoicesService choicesService,
+            IResultsService resultsService)
         {
             _httpContextAccessor = httpContextAccessor;
             _repo = repo;
-            _choicesService = choicesService; 
+            _choicesService = choicesService;
             _anaAnaResultsService = resultsService;
 
 
         }
-        public async Task CreatePollAsync(AddPollViewModel Poll, int IdCategory, List<string> choices)
+        public async Task<Poll> CreatePollAsync(AddPollViewModel Poll, int IdCategory, List<string> choices)
         {
             var userId = Guid.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
 
@@ -58,16 +58,17 @@ namespace AnaAna.Services
             };
 
             await _repo.AddAsync(newPoll);
-            
+
             foreach (string choice in choices)
             {
                 await _choicesService.CreateChoicesAsync(newPoll, choice);
-            }  
+            }
+            return newPoll; 
         }
 
         public async Task<List<PollsIndexViewModel>> GetAllAsync()
         {
-            var polls = await _repo.GetAllAsync();
+            var polls = await _repo.GetAllAsync(x => !x.IsPrivate);
 
 
             var enumerable = polls.Select(poll => new PollsIndexViewModel()
@@ -77,8 +78,8 @@ namespace AnaAna.Services
                 Id = poll.Id,
 
 
-            }); 
-            
+            });
+
 
             return enumerable.ToList();
         }
@@ -88,16 +89,33 @@ namespace AnaAna.Services
             PropertyInfo idProperty = typeof(Poll).GetProperty("Id");
             var poll = await _repo.GetAsync(x => x.Id == id);
 
-            var userId = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier); 
+            var userId = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
 
-            bool userAlreadyVoted = false; 
+            var nbVoted = await _anaAnaResultsService.getNbVotedAsync(poll.Id);
 
-            if(userId != null)
+
+            bool userAlreadyVoted = false;
+            bool userIsCreator = false;
+            List<Choice> choicesSelected = null; 
+
+            if (userId != null)
             {
-                
+
                 userAlreadyVoted = await _anaAnaResultsService.currentUserHaveAlreadyVoted(Guid.Parse(userId), poll.Id);
+
+                if (Guid.Parse(userId) == poll.CreatedBy.Id)
+                {
+                    userIsCreator = true;
+                }
+
+                if (userAlreadyVoted)
+                {
+                    choicesSelected = await _anaAnaResultsService.getChoicesSelectedByPollId(poll.Id);
+                }
             }
+
+
 
 
             return new RetrievePollViewModel()
@@ -110,9 +128,32 @@ namespace AnaAna.Services
                 Category = poll.Category,
                 Choices = poll.Choices,
                 Id = poll.Id,
-                UserAlreadyVoted = userAlreadyVoted
+                UserAlreadyVoted = userAlreadyVoted,
+                userIsCreator = userIsCreator,
+                IsDisabled = poll.IsDisabled,
+                nbVoted = nbVoted, 
+                ChoicesSelected = choicesSelected,
+
             };
-            
+
         }
+        public async Task<Poll> GetOneByIdAsyncNoVM(Guid Id)
+        {
+            PropertyInfo idProperty = typeof(Poll).GetProperty("Id");
+            var poll = await _repo.GetAsync(x => x.Id == Id);
+            return poll;
+        }
+
+        public async Task<Poll> Update<T>(Guid Id, string property, T changes) where T : struct
+        {
+            
+            var poll = await _repo.GetAsync(x => x.Id == Id);
+            poll.GetType().GetProperty(property).SetValue(poll,changes);
+            await _repo.UpdateAsync(poll);
+
+            return poll; 
+        }
+
+
     }
 }

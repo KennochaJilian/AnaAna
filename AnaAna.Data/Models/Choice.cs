@@ -19,7 +19,7 @@ namespace AnaAna.Data.Models
 
         public List<string> IncludesNeeded()
         {
-            throw new NotImplementedException();
+            return new List<string>();
         }
     }
 }

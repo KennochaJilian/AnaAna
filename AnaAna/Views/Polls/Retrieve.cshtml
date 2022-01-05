@@ -1,5 +1,6 @@
 ﻿@using AnaAna.Data.Models
 @using AnaAna.Services.ViewModels
+@using Microsoft.AspNetCore.Http
 
 @model RetrievePollViewModel;
 
@@ -8,58 +9,111 @@
 <p> @Model.StartedAd </p>
 <p> @Model.EndedAt </p>
 
-<h2> Categorie : @Model.Category.Name </h2>
+<p> Categorie : @Model.Category.Name </p>
 
- @if (Model.UserAlreadyVoted)
+@if (Model.userIsCreator && !Model.IsDisabled)
 {
-    <div id="result">
-        <p> Wesh t'as déjà voté :D</p>
-    </div>
+    <div class="btn btn-primary" onclick="desactivatePoll()"> Désactiver le sondage </div>
 }
-else
+
+<p> Voir les resultats <a href="~/Results/index?pollId=@Model.Id"> ici </a></p>
+
+@if (Model.IsDisabled)
 {
+    <p> Sondage desactivé :) </p>
+}
 
-    <form asp-action="CreateResult">
+<p> Nombre de votant(s) = @Model.nbVoted</p>
 
-        <input type="hidden" name="pollId" value="@Model.Id">
 
-        @if (Model.HasMultipleChoice)
+
+
+
+<form asp-action=@ViewData["mode"]>
+
+    <input id="pollId" type="hidden" name="pollId" value="@Model.Id">
+
+    @if (Model.HasMultipleChoice)
+    {
+        <p> Choisis une ou plusieurs réponses :</p>
+
+
+        @foreach (Choice choice in Model.Choices)
         {
-            <p> Choisis une ou plusieurs réponse :</p>
 
-            @foreach (Choice choice in Model.Choices)
-            {
+            <div class="form-check">
 
-                <div class="form-check">
+                @if (Model.ChoicesSelected != null && Model.ChoicesSelected.Any(x => x.Id == choice.Id))
+                {
+
+                    <input class="form-check-input" type="checkbox" name="choicesSelected" id="choice-@choice.Id" value="@choice.Id"
+               checked>
+                }
+                else
+                {
                     <input class="form-check-input" type="checkbox" name="choicesSelected" id="choice-@choice.Id" value="@choice.Id">
-                    <label class="form-check-label" for="choice-@choice.Id">
-                        @choice.Label
-                    </label>
-                </div>
-            }
+                }
+
+                <label class="form-check-label" for="choice-@choice.Id">
+                    @choice.Label
+                </label>
+            </div>
+        }
+    }
+    else
+    {
+        <p> Choisis une réponse :</p>
+
+        @foreach (Choice choice in Model.Choices)
+        {
+
+
+             <div class="form-check">
+
+                @if (Model.ChoicesSelected != null && Model.ChoicesSelected.Any(x => x.Id == choice.Id))
+                {
+
+                    <input class="form-check-input" type="radio" name="choicesSelected" id="choice-@choice.Id" value="@choice.Id"
+               checked>
+                }
+                else
+                {
+                    <input class="form-check-input" type="radio" name="choicesSelected" id="choice-@choice.Id" value="@choice.Id">
+                }
+
+                <label class="form-check-label" for="choice-@choice.Id">
+                    @choice.Label
+                </label>
+            </div>
+        }
+
+    }
+
+    @if (Context.User.Identity.IsAuthenticated && !Model.IsDisabled)
+    {
+        @if (Model.UserAlreadyVoted)
+        {
+            <div class="form-group">
+                <input type="submit" value="Modifier mon vote !" class="btn btn-primary" />
+            </div>
         }
         else
         {
-            <p> Choisis une réponse :</p>
-
-            @foreach (Choice choice in Model.Choices)
-            {
-
-
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="choicesSelected" id="choice-@choice.Id" value="@choice.Id">
-                    <label class="form-check-label" for="choice-@choice.Id">
-                        @choice.Label
-                    </label>
-                </div>
-            }
-
+            <div class="form-group">
+                <input type="submit" value="Voter" class="btn btn-primary" />
+            </div>
         }
 
+    }
+    else
+    {
         <div class="form-group">
-            <input type="submit" value="Créer" class="btn btn-primary" />
+            <input type="submit" value="Voter" class="btn btn-primary" disabled />
         </div>
 
+    }
 
-    </form>
-}
+
+
+</form>
+

@@ -24,7 +24,7 @@ namespace AnaAna.Data
 
          protected override void OnModelCreating(ModelBuilder builder)
     {
-            //builder.Entity<Poll>().HasQueryFilter(x => !x.IsPrivate);
+            
             base.OnModelCreating(builder);
     }
     }

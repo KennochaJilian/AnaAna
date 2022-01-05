@@ -35,11 +35,15 @@ namespace AnaAna
 
 
             services.AddControllersWithViews();
-            services.AddScoped<IAnaAnaResultsService, AnaAnaResultsService>(); 
+            services.AddScoped<IResultsService, ResultsService>(); 
             services.AddScoped<IChoicesService, ChoicesService>();
             services.AddScoped<ICategoriesService, CategoriesService>();
             services.AddScoped<IPollsService, PollsService>();
-            services.AddScoped(typeof(IRepositoryGeneric<>), typeof(RepositoryGeneric<>));
+            services.AddScoped<IRepositoryGeneric<Poll>, RepositoryGeneric<Poll>>();
+            services.AddScoped<IRepositoryGeneric<Choice>, RepositoryGeneric<Choice>>();
+            services.AddScoped<IResultRepository, ResultRepository>();
+            services.AddScoped<IRepositoryGeneric<Category>, RepositoryGeneric<Category>>();
+            services.AddScoped<IRepositoryGeneric<ApplicationUser>, RepositoryGeneric<ApplicationUser>>();
             services.AddHttpContextAccessor();
         }
 
