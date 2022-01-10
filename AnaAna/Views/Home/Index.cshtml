@@ -1,16 +1,19 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "AnaAna";
+}
+@section Styles {
+    <link rel="stylesheet" asp-append-version="true" href="~/css/home.css" />
 }
 
 <header id="header-home">
     <h1> Créer un <span> sondage </span> en quelques secondes </h1>
     <p>Simple. Vite. Gratuit </p>
     <div id="header-img">
-        <img src="~/images/home-header-poll.PNG" />
+        <img src="~/images/logo_ana_ana.png" />
     </div>
     <div id="btn-nav" class="d-flex justify-content-between m-auto">
         <a asp-controller="Polls" asp-action="Create" class="btn btn-primary"> Créer un sondage </a>
-        <a asp-controller="Polls" asp-action="Index" class="btn btn-primary"> Liste des sondages publics </a>
+        <a asp-controller="Polls" asp-action="Index" class="btn btn-primary"> Liste des sondages  </a>
     </div>    
 </header>
 

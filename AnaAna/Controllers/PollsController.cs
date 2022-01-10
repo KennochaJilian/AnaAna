@@ -15,17 +15,29 @@ namespace AnaAna.Controllers
         private readonly ICategoriesService _categoriesService;
         private readonly IPollsService _pollsService;
         private readonly IResultsService _resultsService;
-        public PollsController(ICategoriesService CategorieService, IPollsService service, IResultsService resultsService)
+        private readonly IEmailsService _emailsService;
+        public PollsController(
+            ICategoriesService CategorieService,
+            IPollsService service,
+            IResultsService resultsService,
+            IEmailsService emailsService)
         {
             _categoriesService = CategorieService;
             _pollsService = service;
             _resultsService = resultsService;
+            _emailsService = emailsService;
 
         }
-        public async Task<IActionResult> Index([FromQuery(Name = "category")] string categoryName)
+        public async Task<IActionResult> Index([FromQuery(Name = "category")] string queryCategoryName, string categoryName, int page = 1)
         {
-            var data = await _pollsService.GetAllAsync();
-
+            if(categoryName == null)
+            {
+                categoryName = queryCategoryName; 
+            }
+            var data = await _pollsService.GetAllAsync(categoryName);
+            data.CurrentPage = page;
+            data.PollsPerPage = 5; 
+            ViewData["categorySelected"] = categoryName; 
             return View(data);
         }
 
@@ -43,7 +55,7 @@ namespace AnaAna.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(AddPollViewModel model)
         {
-            var selectedId = Request.Form["Tags"];
+           
             var choices = Request.Form["Choices"].ToString().Split(',').ToList();
 
 
@@ -52,7 +64,8 @@ namespace AnaAna.Controllers
                 return BadRequest(model);
             }
 
-            var newPoll = await _pollsService.CreatePollAsync(model, int.Parse(selectedId), choices);
+            var newPoll = await _pollsService.CreatePollAsync(model, choices);
+            _emailsService.PrepareAndSendCreatingPollEmailAsync(newPoll);
 
             return Redirect($"Retrieve/{newPoll.Id}");
         }
@@ -95,6 +108,7 @@ namespace AnaAna.Controllers
         {
 
             await _resultsService.EditResultAsync(Guid.Parse(collection["pollId"]), collection["choicesSelected"]);
+            _emailsService.SendEmail("tassa780@gmail.com", "Je suis un test", "<p> Je suis un test </p>"); 
 
             return Redirect($"~/Results/index?pollId={collection["pollId"]}");
 

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -21,28 +22,36 @@ namespace AnaAna.Services
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IChoicesService _choicesService;
         private readonly IResultsService _anaAnaResultsService;
-
+        private readonly IRepositoryGeneric<ApplicationUser> _userRepo;
+        private readonly IRepositoryGeneric<Category> _categoryRepo;
 
         public PollsService(
             IHttpContextAccessor httpContextAccessor,
             IRepositoryGeneric<Poll> repo,
             IChoicesService choicesService,
-            IResultsService resultsService)
+            IResultsService resultsService,
+            IRepositoryGeneric<ApplicationUser> repoUser,
+            IRepositoryGeneric<Category> categoriesRepo
+
+            )
         {
             _httpContextAccessor = httpContextAccessor;
             _repo = repo;
             _choicesService = choicesService;
             _anaAnaResultsService = resultsService;
+            _userRepo = repoUser; 
+            _categoryRepo = categoriesRepo;
+                
 
 
         }
-        public async Task<Poll> CreatePollAsync(AddPollViewModel Poll, int IdCategory, List<string> choices)
+        public async Task<Poll> CreatePollAsync(AddPollViewModel Poll, List<string> choices)
         {
             var userId = Guid.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
 
-            var user = new ApplicationUser { Id = userId };
+            var user = await _userRepo.GetAsync(x => x.Id == userId);
 
-            var category = new Category { Id = IdCategory };
+            var category = new Category { Id = Poll.CategoryId};
 
             var newPoll = new Poll()
             {
@@ -66,22 +75,25 @@ namespace AnaAna.Services
             return newPoll; 
         }
 
-        public async Task<List<PollsIndexViewModel>> GetAllAsync()
+        public async Task<PollsIndexViewModel> GetAllAsync(string categoryName = null)
         {
-            var polls = await _repo.GetAllAsync(x => !x.IsPrivate);
-
-
-            var enumerable = polls.Select(poll => new PollsIndexViewModel()
+            Expression<Func<Poll, bool>> predicate = x => !x.IsPrivate; 
+            if(categoryName != null)
             {
-                Description = poll.Description,
-                Title = poll.Title,
-                Id = poll.Id,
+                predicate = x => !x.IsPrivate && x.Category.Name == categoryName;
+            }
+            var polls = await _repo.GetAllAsync(predicate);
+            var categories = await _categoryRepo.GetAllAsync();
 
 
-            });
 
 
-            return enumerable.ToList();
+            return new PollsIndexViewModel
+            {
+                Categories = categories,
+                Polls = polls
+            }; 
+
         }
 
         public async Task<RetrievePollViewModel> GetOneByIdAsync(Guid id)

@@ -7,11 +7,13 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.12" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.12" />
 		<PackageReference Include="Microsoft.Extensions.Identity.Core" Version="6.0.0" />
 	</ItemGroup>
 	
 	<ItemGroup>
 		<ProjectReference Include="..\AnaAna.Data\AnaAna.Data.csproj" />
+		<ProjectReference Include="..\AnaAna.RazorHtmlEmails\AnaAna.RazorHtmlEmails.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -1,0 +1,86 @@
+﻿@using AnaAna.Data.Models
+@using AnaAna.Services.ViewModels
+
+@model RetrieveUserProfileInformationsViewModel
+@{
+    ViewData["Title"] = "Mon profil";
+}
+
+<h1>Mon profil </h1>
+
+<h2 class="mb-5">Mes sondages</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nom du sondage</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date de début</th>
+            <th scope="col">Date de fin</th>
+            <th scope="col"> Clôturer le sondage ? </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Poll poll in Model.UserPolls)
+        {
+            <tr>
+                <th scope="row"> @poll.Title </th>
+                <th> @poll.Description </th>
+                <th> @poll.StartedAt</th>
+                <th> @poll.EndedAt</th>
+                <th>  
+                    @if (!poll.IsDisabled)
+                    {
+                        <div class="btn btn-primary w-100" onclick="desactivatePoll()"> Clôturer le sondage </div>
+                    } else
+                    {
+                        <p> Sondage déjà cloturé </p>
+                    }
+                </th>
+
+            </tr>
+
+        }
+
+    </tbody>
+
+</table>
+
+<h2 class="mt-5 mb-5"> Mes réponses </h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nom du sondage</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date de fin</th>
+            <th scope="col">Ma réponse </th>
+            <th scope="col"> Sondage terminé ? </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Result result in Model.UserResults)
+        {
+            <tr>
+                <th scope="row"> @result.Poll.Title </th>
+                <th> @result.Poll.Description </th>
+                <th> @result.Poll.EndedAt</th>
+                <th> @result.Choice.Label</th>
+                <th>  
+                    @if (result.Poll.IsDisabled)
+                    {
+                        <a class="btn btn-primary w-100" href="~/Results/index?pollId=@result.Poll.Id"> Voir les résultats </a>
+                    } else
+                    {
+                        <p> Sondage en cours </p>
+                    }
+                </th>
+            </tr>
+
+        }
+
+    </tbody>
+
+</table>
+
+
+

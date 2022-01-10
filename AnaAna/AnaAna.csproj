@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AnaAna.Data\AnaAna.Data.csproj" />
+    <ProjectReference Include="..\AnaAna.RazorHtmlEmails\AnaAna.RazorHtmlEmails.csproj" />
 	  <ProjectReference Include="..\AnaAna.Services\AnaAna.Services.csproj" />
   </ItemGroup>
 

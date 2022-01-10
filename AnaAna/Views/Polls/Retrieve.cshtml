@@ -3,117 +3,137 @@
 @using Microsoft.AspNetCore.Http
 
 @model RetrievePollViewModel;
+@section Styles {
+<link rel="stylesheet" asp-append-version="true" href="~/css/retrieve.css" />
+}
+
+
+
 
 <h1> @Model.Title </h1>
-<p> @Model.Description </p>
-<p> @Model.StartedAd </p>
-<p> @Model.EndedAt </p>
-
-<p> Categorie : @Model.Category.Name </p>
-
-@if (Model.userIsCreator && !Model.IsDisabled)
-{
-    <div class="btn btn-primary" onclick="desactivatePoll()"> Désactiver le sondage </div>
-}
-
-<p> Voir les resultats <a href="~/Results/index?pollId=@Model.Id"> ici </a></p>
-
-@if (Model.IsDisabled)
-{
-    <p> Sondage desactivé :) </p>
-}
-
-<p> Nombre de votant(s) = @Model.nbVoted</p>
-
-
-
-
-
-<form asp-action=@ViewData["mode"]>
-
-    <input id="pollId" type="hidden" name="pollId" value="@Model.Id">
-
-    @if (Model.HasMultipleChoice)
-    {
-        <p> Choisis une ou plusieurs réponses :</p>
-
-
-        @foreach (Choice choice in Model.Choices)
-        {
-
-            <div class="form-check">
-
-                @if (Model.ChoicesSelected != null && Model.ChoicesSelected.Any(x => x.Id == choice.Id))
-                {
-
-                    <input class="form-check-input" type="checkbox" name="choicesSelected" id="choice-@choice.Id" value="@choice.Id"
-               checked>
-                }
-                else
-                {
-                    <input class="form-check-input" type="checkbox" name="choicesSelected" id="choice-@choice.Id" value="@choice.Id">
-                }
-
-                <label class="form-check-label" for="choice-@choice.Id">
-                    @choice.Label
-                </label>
+<p class="text-center mb-4"> @Model.Description</p>
+<section class="ana-ana-container ana-ana-styled-container ">
+    <div class="d-flex justify-content-around">
+        <div>
+            <p> Se termine le @Model.EndedAt</p>
+            <div>
+                <p> <span class="labels-poll"> Catégorie : </span> @Model.Category.Name</p>
+                <p> <span class="labels-poll"> Nombre de votes : </span> @Model.nbVoted</p>
             </div>
-        }
-    }
-    else
-    {
-        <p> Choisis une réponse :</p>
-
-        @foreach (Choice choice in Model.Choices)
-        {
-
-
-             <div class="form-check">
-
-                @if (Model.ChoicesSelected != null && Model.ChoicesSelected.Any(x => x.Id == choice.Id))
-                {
-
-                    <input class="form-check-input" type="radio" name="choicesSelected" id="choice-@choice.Id" value="@choice.Id"
-               checked>
-                }
-                else
-                {
-                    <input class="form-check-input" type="radio" name="choicesSelected" id="choice-@choice.Id" value="@choice.Id">
-                }
-
-                <label class="form-check-label" for="choice-@choice.Id">
-                    @choice.Label
-                </label>
-            </div>
-        }
-
-    }
-
-    @if (Context.User.Identity.IsAuthenticated && !Model.IsDisabled)
-    {
-        @if (Model.UserAlreadyVoted)
-        {
-            <div class="form-group">
-                <input type="submit" value="Modifier mon vote !" class="btn btn-primary" />
-            </div>
-        }
-        else
-        {
-            <div class="form-group">
-                <input type="submit" value="Voter" class="btn btn-primary" />
-            </div>
-        }
-
-    }
-    else
-    {
-        <div class="form-group">
-            <input type="submit" value="Voter" class="btn btn-primary" disabled />
         </div>
+        <div>
+            <p>Créé le @Model.StartedAd</p>
+            <div>
+                <p> 
+                    <a class="btn btn-result" href="~/Results/index?pollId=@Model.Id"> Voir les résultats </a>
+                </p>
+                @if (Model.userIsCreator && !Model.IsDisabled)
+                {
+                    <div class="btn btn-primary w-100" onclick="desactivatePoll()"> Clôturer le sondage </div>
+                }
 
-    }
+            </div>
+        </div>
+    </div>
+
+    <div class="poll-form-container">
+        <form asp-action=@ViewData["mode"] class="d-flex flex-column justify-content-between poll-form">
+
+            <input id="pollId" type="hidden" name="pollId" value="@Model.Id">
+            <div>
+                @if (Model.HasMultipleChoice)
+                {
+                    <p class="labels-poll text-center"> Choisis une ou plusieurs réponses :</p>
+
+
+                    @foreach (Choice choice in Model.Choices)
+                    {
+
+                        <div class="form-check ana-ana-inputs">
+                            <div>
+                                @if (Model.ChoicesSelected != null && Model.ChoicesSelected.Any(x => x.Id == choice.Id))
+                                {
+
+                                    <input class="form-check-input" type="checkbox" name="choicesSelected" id="choice-@choice.Id" value="@choice.Id"
+                               checked>
+                                }
+                                else
+                                {
+                                    <input class="form-check-input" type="checkbox" name="choicesSelected" id="choice-@choice.Id" value="@choice.Id">
+                                }
+
+                                <label class="form-check-label" for="choice-@choice.Id">
+                                    @choice.Label
+                                </label>
+
+                            </div>
+
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p class="labels-poll text-center"> Choisis une réponse :</p>
+
+                    @foreach (Choice choice in Model.Choices)
+                    {
+
+
+                        <div class="form-check ana-ana-inputs">
+                            <div>
+
+                                @if (Model.ChoicesSelected != null && Model.ChoicesSelected.Any(x => x.Id == choice.Id))
+                                {
+
+                                    <input class="form-check-input" type="radio" name="choicesSelected" id="choice-@choice.Id" value="@choice.Id"
+                               checked>
+                                }
+                                else
+                                {
+                                    <input class="form-check-input" type="radio" name="choicesSelected" id="choice-@choice.Id" value="@choice.Id">
+                                }
+
+                                <label class="form-check-label" for="choice-@choice.Id">
+                                    @choice.Label
+                                </label>
+
+                            </div>
+                        </div>
+                    }
+
+                }
+
+            </div>
 
 
 
-</form>
+            @if (Context.User.Identity.IsAuthenticated && !Model.IsDisabled)
+            {
+                @if (Model.UserAlreadyVoted)
+                {
+                    <div class=" form-group d-flex justify-content-center">
+                        <input type="submit" value="Modifier mon vote !" class="btn btn-primary" />
+                    </div>
+                }
+                else
+                {
+                    <div class=" form-group d-flex justify-content-center">
+                        <input type="submit" value="Voter" class="btn btn-primary" />
+                    </div>
+                }
+
+            }
+            else
+            {
+                <div class=" form-group d-flex justify-content-center">
+                    <input type="submit" value="Voter" class="btn btn-primary" disabled />
+                </div>
+
+            }
+        </form>
+    </div>
+
+    <div class="poll-egg"> </div>
+
+</section>
 

@@ -70,7 +70,7 @@ namespace AnaAna.Services
 
         public async Task<ResultViewModel> getResultAndPollById(Poll poll)
         {
-
+            int nbVoted = await getNbVotedAsync(poll.Id); 
 
             return new ResultViewModel()
             {
@@ -79,7 +79,9 @@ namespace AnaAna.Services
                 PollDescription = poll.Description,
                 PollEndedAt = poll.EndedAt,
                 PollStartedAt = poll.StartedAt,
-                PollTitle = poll.Title
+                PollTitle = poll.Title,
+                NbVoted = nbVoted, 
+                PollCategoryName = poll.Category.Name
 
             };
 

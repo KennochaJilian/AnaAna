@@ -29,6 +29,7 @@ let data = {
 const config = {
     type: 'pie',
     data: data,
+
 };
 
 function getArrayOfChoicesColors (countChoices){
@@ -62,7 +63,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 data.labels = results.labels;
                 data.datasets[0].data = results.countChoices;
                 data.datasets[0].label = results.pollTitle;
-                data.datasets[0].backgroundColor = getArrayOfChoicesColors(results.countChoices.length); 
+                data.datasets[0].backgroundColor = getArrayOfChoicesColors(results.countChoices.length);
 
                 const myChart = new Chart(
                     document.getElementById('result'),

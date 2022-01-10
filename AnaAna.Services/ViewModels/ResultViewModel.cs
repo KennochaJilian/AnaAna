@@ -15,6 +15,8 @@ namespace AnaAna.Services.ViewModels
         public DateTime PollStartedAt { get; set; }
         public DateTime PollEndedAt { get; set; }
         public string PollDescription { get; set; }
+        public int NbVoted { get; set; }
+        public string PollCategoryName { get; set; }
 
 
     }

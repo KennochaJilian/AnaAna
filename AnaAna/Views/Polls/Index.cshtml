@@ -1,14 +1,70 @@
-﻿@using AnaAna.Services.ViewModels
+﻿@using AnaAna.Data.Models
+@using AnaAna.Services.ViewModels
 
-@model IEnumerable<PollsIndexViewModel>
+@model PollsIndexViewModel
 
 @{
+    var categorySelected = ViewData["categorySelected"];
+    ViewData["Title"] = "Liste des sondages";
 }
+
+@section Styles {
+<link rel="stylesheet" asp-append-version="true" href="~/css/list-polls.css" />
+}
+
 <h1>Listes des sondages</h1>
 
-@foreach (PollsIndexViewModel Poll in Model) {
-  <a href="~/Polls/Retrieve/@Poll.Id">@Poll.Title</a>
-  <p>@Poll.Description</p>
-}
+<section class="ana-ana-container">
+
+    <aside class="category-selector-container">
+        <div>
+            <span> Categorie : </span>
+            <select class="form-select" id="selector-category">
+                <option value=""></option>
+                @foreach (Category category in Model.Categories)
+                {
+                    if (categorySelected != null && categorySelected.ToString() == category.Name)
+                    {
+                        <option selected value="@category.Name"> @category.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@category.Name"> @category.Name</option>
+                    }
+
+                }
+            </select>
+        </div>
+    </aside>
+
+    <div>
+        @foreach (Poll poll in Model.PaginatedBlogs())
+        {
+            <div class="poll-cards">
+                <div class="poll-informations">
+                    <p class="poll-title">@poll.Title</p>
+                    <p class="poll-description">@poll.Description</p>
+                </div>
+                <div class=link-to-poll>
+                    <a class="btn-primary btn" href="~/Polls/Retrieve/@poll.Id">Voir le sondage</a>
+                </div>
+                <div class="egg"></div>
+            </div>
+        }
+
+    </div>
+    <section class="ana-ana-pagination">
+        <aside>
+            <ul class="pagination">
+                @for (int i = 1; i <= Model.PageCount(); i++)
+                {
+                    <li class="@(i == Model.CurrentPage ? "page-item active" : "page-item")">
+                        <a class="page-link" href="@Url.Action("Index", new { page = i, categoryName = categorySelected})">@i</a>
+                    </li>
+                }
+            </ul>
+        </aside>
+    </section>
+</section>
 
 

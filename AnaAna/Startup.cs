@@ -2,6 +2,8 @@ using AnaAna.Data;
 using AnaAna.Data.Interfaces;
 using AnaAna.Data.Models;
 using AnaAna.Data.Repositories;
+using AnaAna.RazorHtmlEmails.Interfaces;
+using AnaAna.RazorHtmlEmails.Services;
 using AnaAna.Services;
 using AnaAna.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -35,10 +37,13 @@ namespace AnaAna
 
 
             services.AddControllersWithViews();
+            services.AddScoped<IProfilesService, ProfilesService>();
             services.AddScoped<IResultsService, ResultsService>(); 
             services.AddScoped<IChoicesService, ChoicesService>();
             services.AddScoped<ICategoriesService, CategoriesService>();
             services.AddScoped<IPollsService, PollsService>();
+            services.AddScoped<IRazorViewToStringRender, RazorViewToStringRenderer>();
+            services.AddScoped<IEmailsService, EmailsService>();
             services.AddScoped<IRepositoryGeneric<Poll>, RepositoryGeneric<Poll>>();
             services.AddScoped<IRepositoryGeneric<Choice>, RepositoryGeneric<Choice>>();
             services.AddScoped<IResultRepository, ResultRepository>();

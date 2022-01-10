@@ -1,0 +1,72 @@
+﻿.labels-poll {
+    font-weight: bold;
+    font-family: Montserrat;
+    font-size: 20px;
+}
+
+.ana-ana-inputs {
+    margin: auto;
+    width: 287px;
+    height: 41px;
+    background: rgba(255, 236, 165, 0.6);
+    border-radius: 44px;
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 36px;
+}
+
+    .ana-ana-inputs div {
+        display: flex;
+        align-items: center;
+    }
+
+.poll-form {
+    min-height: 420px;
+    z-index: 2;
+}
+.poll-form input[type="submit"]{
+    z-index: 15;
+}
+.poll-egg {
+    background-color: #FFECA5;
+    width: 1400px;
+    height: 500px;
+    position: absolute;
+    border-radius: 50%;
+    bottom: -50%;
+    right: -30%;
+    z-index: 1;
+}
+.poll-form-container {
+    z-index: 10;
+    margin-top: 60px;
+}
+.btn-result {
+    background: rgba(255, 236, 165, 0.6);
+    border-radius: 44px;
+    width: 100%;
+    font-family: Poppins;
+    text-align: center;
+    color: #754C24;
+}
+#canvas-poll{
+    height: 300px; 
+    width: 400px;
+    margin: auto
+}
+.result-container{
+    min-height: 800px;
+}
+
+.title-result{
+    font-family: Montserrat; 
+    font-weight: bold; 
+    font-size : 24px; 
+    margin-bottom:  20px
+}

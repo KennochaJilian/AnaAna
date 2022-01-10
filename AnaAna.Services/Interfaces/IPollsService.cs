@@ -10,8 +10,8 @@ namespace AnaAna.Services.Interfaces
 {
     public interface IPollsService
     {
-        Task<Poll> CreatePollAsync(AddPollViewModel Poll, int IdCategory, List<string> choices);
-        Task<List<PollsIndexViewModel>> GetAllAsync();
+        Task<Poll> CreatePollAsync(AddPollViewModel Poll, List<string> choices);
+        Task<PollsIndexViewModel> GetAllAsync(string categoryName = null);
 
         Task <RetrievePollViewModel> GetOneByIdAsync(Guid id);
         Task<Poll> GetOneByIdAsyncNoVM(Guid id);

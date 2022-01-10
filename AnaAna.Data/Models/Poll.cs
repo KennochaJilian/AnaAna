@@ -37,7 +37,7 @@ namespace AnaAna.Data.Models
 
         public List<string> IncludesNeeded()
         {
-            return new List<string>() {"Category", "Choices", "CreatedBy" };
+            return new List<string>() {"Category", "Choices", "CreatedBy"};
         }
     }
 }

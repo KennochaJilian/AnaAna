@@ -1,0 +1,34 @@
+﻿.account-container{
+    width : 435px; 
+    min-height: 600px;
+    margin: auto;
+    margin-bottom: 40px;
+    margin-top: 20px
+}
+.login-container{
+    max-height: 400px; 
+    min-height: 400px;
+}
+.login-container .account-form{
+    min-height: 340px;
+}
+.account-form {
+    min-height: 500px;
+}
+.grass {
+    background-color: #6FA43F;
+    width: 887.46px;
+    height: 701.71px;
+    position: absolute;
+    border-radius: 50%;
+    bottom: -95%;
+    right: -50%;
+}
+.login-container .grass{
+    bottom: -150%;
+}
+.btn-container{
+    z-index : 2;
+    display: flex; 
+    justify-content: center; 
+}

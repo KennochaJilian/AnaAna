@@ -34,6 +34,7 @@
       "AnaAna/1.0.0": {
         "dependencies": {
           "AnaAna.Data": "1.0.0",
+          "AnaAna.RazorHtmlEmails": "1.0.0",
           "AnaAna.Services": "1.0.0",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "5.0.12",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.12",
@@ -2041,11 +2042,24 @@
           "AnaAna.Data.dll": {}
         }
       },
+      "AnaAna.RazorHtmlEmails/1.0.0": {
+        "dependencies": {
+          "AnaAna.Data": "1.0.0"
+        },
+        "runtime": {
+          "AnaAna.RazorHtmlEmails.dll": {}
+        },
+        "compile": {
+          "AnaAna.RazorHtmlEmails.dll": {}
+        }
+      },
       "AnaAna.Services/1.0.0": {
         "dependencies": {
           "AnaAna.Data": "1.0.0",
+          "AnaAna.RazorHtmlEmails": "1.0.0",
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
           "Microsoft.AspNetCore.Http.Features": "5.0.12",
+          "Microsoft.AspNetCore.Identity.UI": "5.0.12",
           "Microsoft.Extensions.Identity.Core": "6.0.0"
         },
         "runtime": {
@@ -4631,6 +4645,11 @@
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
     "AnaAna.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AnaAna.RazorHtmlEmails/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

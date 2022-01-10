@@ -14,3 +14,23 @@ const addChoice = () => {
 $(function () {
     $('[data-toggle="popover"]').popover()
 })
+
+window.addEventListener("DOMContentLoaded", () => {
+    let selectorCategory = document.getElementById("selector-category");
+    if (selectorCategory) {
+
+        
+
+        selectorCategory.addEventListener("change", (nameCategory) => {
+            let url = nameCategory.target.value ? window.location.origin + `/Polls?category=${nameCategory.target.value}` :
+                window.location.origin + `/Polls`; 
+          window.location.href = url
+        })
+    }
+
+
+
+
+
+
+})

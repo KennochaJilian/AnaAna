@@ -72,14 +72,14 @@
         }
       }
     },
-    "C:\\Users\\codin\\Documents\\Projets CCI\\C#-ASP-net\\AnaAna\\AnaAna.Services\\AnaAna.Services.csproj": {
+    "C:\\Users\\codin\\Documents\\Projets CCI\\C#-ASP-net\\AnaAna\\AnaAna.RazorHtmlEmails\\AnaAna.RazorHtmlEmails.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\codin\\Documents\\Projets CCI\\C#-ASP-net\\AnaAna\\AnaAna.Services\\AnaAna.Services.csproj",
-        "projectName": "AnaAna.Services",
-        "projectPath": "C:\\Users\\codin\\Documents\\Projets CCI\\C#-ASP-net\\AnaAna\\AnaAna.Services\\AnaAna.Services.csproj",
+        "projectUniqueName": "C:\\Users\\codin\\Documents\\Projets CCI\\C#-ASP-net\\AnaAna\\AnaAna.RazorHtmlEmails\\AnaAna.RazorHtmlEmails.csproj",
+        "projectName": "AnaAna.RazorHtmlEmails",
+        "projectPath": "C:\\Users\\codin\\Documents\\Projets CCI\\C#-ASP-net\\AnaAna\\AnaAna.RazorHtmlEmails\\AnaAna.RazorHtmlEmails.csproj",
         "packagesPath": "C:\\Users\\codin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\codin\\Documents\\Projets CCI\\C#-ASP-net\\AnaAna\\AnaAna.Services\\obj\\",
+        "outputPath": "C:\\Users\\codin\\Documents\\Projets CCI\\C#-ASP-net\\AnaAna\\AnaAna.RazorHtmlEmails\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\codin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -111,12 +111,80 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\codin\\Documents\\Projets CCI\\C#-ASP-net\\AnaAna\\AnaAna.Services\\AnaAna.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\codin\\Documents\\Projets CCI\\C#-ASP-net\\AnaAna\\AnaAna.Services\\AnaAna.Services.csproj",
+        "projectName": "AnaAna.Services",
+        "projectPath": "C:\\Users\\codin\\Documents\\Projets CCI\\C#-ASP-net\\AnaAna\\AnaAna.Services\\AnaAna.Services.csproj",
+        "packagesPath": "C:\\Users\\codin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\codin\\Documents\\Projets CCI\\C#-ASP-net\\AnaAna\\AnaAna.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\codin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\codin\\Documents\\Projets CCI\\C#-ASP-net\\AnaAna\\AnaAna.Data\\AnaAna.Data.csproj": {
+                "projectPath": "C:\\Users\\codin\\Documents\\Projets CCI\\C#-ASP-net\\AnaAna\\AnaAna.Data\\AnaAna.Data.csproj"
+              },
+              "C:\\Users\\codin\\Documents\\Projets CCI\\C#-ASP-net\\AnaAna\\AnaAna.RazorHtmlEmails\\AnaAna.RazorHtmlEmails.csproj": {
+                "projectPath": "C:\\Users\\codin\\Documents\\Projets CCI\\C#-ASP-net\\AnaAna\\AnaAna.RazorHtmlEmails\\AnaAna.RazorHtmlEmails.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
           "dependencies": {
             "Microsoft.AspNetCore.Http.Abstractions": {
               "target": "Package",
               "version": "[2.2.0, )"
             },
             "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
               "version": "[5.0.12, )"
             },
@@ -170,6 +238,9 @@
             "projectReferences": {
               "C:\\Users\\codin\\Documents\\Projets CCI\\C#-ASP-net\\AnaAna\\AnaAna.Data\\AnaAna.Data.csproj": {
                 "projectPath": "C:\\Users\\codin\\Documents\\Projets CCI\\C#-ASP-net\\AnaAna\\AnaAna.Data\\AnaAna.Data.csproj"
+              },
+              "C:\\Users\\codin\\Documents\\Projets CCI\\C#-ASP-net\\AnaAna\\AnaAna.RazorHtmlEmails\\AnaAna.RazorHtmlEmails.csproj": {
+                "projectPath": "C:\\Users\\codin\\Documents\\Projets CCI\\C#-ASP-net\\AnaAna\\AnaAna.RazorHtmlEmails\\AnaAna.RazorHtmlEmails.csproj"
               },
               "C:\\Users\\codin\\Documents\\Projets CCI\\C#-ASP-net\\AnaAna\\AnaAna.Services\\AnaAna.Services.csproj": {
                 "projectPath": "C:\\Users\\codin\\Documents\\Projets CCI\\C#-ASP-net\\AnaAna\\AnaAna.Services\\AnaAna.Services.csproj"

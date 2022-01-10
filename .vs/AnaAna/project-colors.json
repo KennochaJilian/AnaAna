@@ -20,7 +20,37 @@
       "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
       "DisplayName": "Fichiers divers",
       "ColorIndex": -1
+    },
+    "cccd47e3-39b9-4fd1-9547-f9a77367b69b": {
+      "ProjectGuid": "cccd47e3-39b9-4fd1-9547-f9a77367b69b",
+      "DisplayName": "AnaAna.RazorHtmlEmails",
+      "ColorIndex": 3
+    },
+    "d0f9a703-438e-48a9-bde8-071217aeae54": {
+      "ProjectGuid": "d0f9a703-438e-48a9-bde8-071217aeae54",
+      "DisplayName": "RazorHtmlEmails.Common",
+      "ColorIndex": 4
+    },
+    "f2419be6-21e3-46c4-adba-028e9a91b2cf": {
+      "ProjectGuid": "f2419be6-21e3-46c4-adba-028e9a91b2cf",
+      "DisplayName": "AnaAna.Test",
+      "ColorIndex": 5
+    },
+    "44f6a3b4-ce6b-4551-abf1-f5c602043f09": {
+      "ProjectGuid": "44f6a3b4-ce6b-4551-abf1-f5c602043f09",
+      "DisplayName": "AnaAna.Test",
+      "ColorIndex": 6
+    },
+    "ca1ebff8-7cd1-411e-a471-1b50359cf568": {
+      "ProjectGuid": "ca1ebff8-7cd1-411e-a471-1b50359cf568",
+      "DisplayName": "AnaAna.RazorEmails",
+      "ColorIndex": 7
+    },
+    "0d0df77a-3665-4867-a0f9-e86d6a35eb01": {
+      "ProjectGuid": "0d0df77a-3665-4867-a0f9-e86d6a35eb01",
+      "DisplayName": "AnaAna.RazorHtmlEmails",
+      "ColorIndex": 8
     }
   },
-  "NextColorIndex": 3
+  "NextColorIndex": 9
 }

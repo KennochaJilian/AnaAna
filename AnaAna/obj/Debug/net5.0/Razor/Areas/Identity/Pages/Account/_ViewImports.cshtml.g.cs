@@ -34,6 +34,13 @@ using AnaAna.Areas.Identity.Pages;
 #line hidden
 #nullable disable
 #nullable restore
+#line 5 "C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna\Areas\Identity\Pages\_ViewImports.cshtml"
+using AnaAna.Data.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 1 "C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna\Areas\Identity\Pages\Account\_ViewImports.cshtml"
 using AnaAna.Areas.Identity.Pages.Account;
 
@@ -41,7 +48,7 @@ using AnaAna.Areas.Identity.Pages.Account;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a63c28171c12d5ef2f8306f3ee3960e001efd730", @"/Areas/Identity/Pages/Account/_ViewImports.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"336104fa6958cd150a680942851cd545a8eebbbf", @"/Areas/Identity/Pages/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a1774c7c610f73f7cfc29542961b9282347449b8", @"/Areas/Identity/Pages/_ViewImports.cshtml")]
     public class Areas_Identity_Pages_Account__ViewImports : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

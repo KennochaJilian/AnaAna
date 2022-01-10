@@ -1,0 +1,29 @@
+﻿@using AnaAna.RazorHtmlEmails.Views.CreatePoll
+@using AnaAna.RazorHtmlEmails.Views.Shared
+
+
+@model CreatePollEmailViewModel
+
+@{
+    ViewData["EmailTitle"] = "Sondage créé !";
+}
+
+<p>
+    Félicitations le sondage @Model.poll.Title a bien été créé !
+</p>
+
+<p>
+    Voici les différents liens relatifs à votre sondage, n'hésitez pas à la partager ! 
+</p>
+
+<br />
+@await Html.PartialAsync("EmailButton", new EmailButtonViewModel("Résultats", $"~/Polls/Retrieve/{@Model.poll.Id}")); 
+
+<br/>
+@await Html.PartialAsync("EmailButton", new EmailButtonViewModel("Résultats", $"~/Results/index?pollId={@Model.poll.Id}")); 
+
+<br/>
+
+<p>
+    L'équipe de AnaAna
+</p>

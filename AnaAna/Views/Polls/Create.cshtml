@@ -4,64 +4,75 @@
 @{
     ViewData["Title"] = "Créer un sondage";
 }
+@section Styles {
+<link rel="stylesheet" asp-append-version="true" href="~/css/create-poll.css" />
+}
 
 <h1> Créer un sondage</h1>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
+<section class="ana-ana-container ana-ana-styled-container ">
+    <form asp-action="Create" class="d-flex flex-column justify-content-between create-form">
+        <div class="row justify-content-around">
+            <div class="col-5">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EndedAt" class="control-label"></label>
+                    <input asp-for="EndedAt" class="form-control" />
+                    <span asp-validation-for="EndedAt" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label> Categorie </label> <br />
+                    <select  class="form-control" asp-for="CategoryId">
+                        @foreach (Category category in Model.Categories)
+                        {
+                            <option value="@category.Id"> @category.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="IsPrivate" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="IsPrivate" /> @Html.DisplayNameFor(model => model.IsPrivate)
+                    </label>
+                    <span asp-validation-for="IsPrivate" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="HasMultipleChoice" /> @Html.DisplayNameFor(model => model.HasMultipleChoice)
+                    </label>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="EndedAt" class="control-label"></label>
-                <input asp-for="EndedAt" class="form-control" />
-                <span asp-validation-for="EndedAt" class="text-danger"></span>
+            <div class="col-5">
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <textarea asp-for="Description" class="form-control"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label> Choix </label> <br />
+                    <div id="choices">
+                        <input type="hidden" class="choices-input form-control" id="choice-model" name="Choices" />
+                        <div id="add-choice-button" onclick="addChoice()" class="btn btn-primary"> Ajouter un choix </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsPrivate" /> @Html.DisplayNameFor(model => model.IsPrivate)
-                </label>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="HasMultipleChoice" /> @Html.DisplayNameFor(model => model.HasMultipleChoice)
-                </label>
-            </div>
-            <div class="form-group">  
-                <label> Categorie </label> <br />
-                <select asp-for="Categories" id="Tags" name="Tags"
-                        asp-items="@(new SelectList(Model.Categories, nameof(Category.Id), nameof(Category.Name)))">
-                </select>
-                <span asp-validation-for="IsPrivate" class="text-danger"></span>
-            </div>
-            <div class="form-group"> 
-                 <label> Choix </label> <br />
-                 <div id="choices"> 
-                     <input type="hidden"  id="choice-model" name="Choices" />
-                     <div id="add-choice-button" onclick="addChoice()" class="btn btn-primary"> Ajouter un choix </div>
+        </div>
+        <div class="form-group d-flex justify-content-center">
 
-                 </div>
-                
+            <input type="submit" value="Créer" class="btn ana-btn-form" />
 
-                <span asp-validation-for="IsPrivate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+        </div>
+    </form>
+    <div class="grass"> </div>
+</section>
 
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
 }

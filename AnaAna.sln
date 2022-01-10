@@ -7,14 +7,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnaAna", "AnaAna\AnaAna.csp
 	ProjectSection(ProjectDependencies) = postProject
 		{5FFCBD12-9D6C-4C06-87D7-F28F21E82FDD} = {5FFCBD12-9D6C-4C06-87D7-F28F21E82FDD}
 		{055E8F55-AE22-49AC-AAC1-3D71773E8003} = {055E8F55-AE22-49AC-AAC1-3D71773E8003}
+		{0D0DF77A-3665-4867-A0F9-E86D6A35EB01} = {0D0DF77A-3665-4867-A0F9-E86D6A35EB01}
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnaAna.Data", "AnaAna.Data\AnaAna.Data.csproj", "{055E8F55-AE22-49AC-AAC1-3D71773E8003}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnaAna.Services", "AnaAna.Services\AnaAna.Services.csproj", "{5FFCBD12-9D6C-4C06-87D7-F28F21E82FDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnaAna.Services", "AnaAna.Services\AnaAna.Services.csproj", "{5FFCBD12-9D6C-4C06-87D7-F28F21E82FDD}"
 	ProjectSection(ProjectDependencies) = postProject
 		{055E8F55-AE22-49AC-AAC1-3D71773E8003} = {055E8F55-AE22-49AC-AAC1-3D71773E8003}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnaAna.RazorHtmlEmails", "AnaAna.RazorHtmlEmails\AnaAna.RazorHtmlEmails.csproj", "{0D0DF77A-3665-4867-A0F9-E86D6A35EB01}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +37,10 @@ Global
 		{5FFCBD12-9D6C-4C06-87D7-F28F21E82FDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FFCBD12-9D6C-4C06-87D7-F28F21E82FDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FFCBD12-9D6C-4C06-87D7-F28F21E82FDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D0DF77A-3665-4867-A0F9-E86D6A35EB01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D0DF77A-3665-4867-A0F9-E86D6A35EB01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D0DF77A-3665-4867-A0F9-E86D6A35EB01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D0DF77A-3665-4867-A0F9-E86D6A35EB01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

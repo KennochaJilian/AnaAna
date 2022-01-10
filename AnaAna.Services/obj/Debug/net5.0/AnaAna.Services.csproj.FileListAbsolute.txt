@@ -13,3 +13,7 @@ C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.Services\obj\Debug
 C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.Services\bin\Debug\net5.0\AnaAna.Data.dll
 C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.Services\bin\Debug\net5.0\AnaAna.Data.pdb
 C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.Services\obj\Debug\net5.0\AnaAna.Services.csproj.CopyComplete
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.Services\bin\Debug\net5.0\AnaAna.RazorHtmlEmails.Views.dll
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.Services\bin\Debug\net5.0\AnaAna.RazorHtmlEmails.Views.pdb
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.Services\bin\Debug\net5.0\AnaAna.RazorHtmlEmails.dll
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.Services\bin\Debug\net5.0\AnaAna.RazorHtmlEmails.pdb

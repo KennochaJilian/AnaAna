@@ -1,0 +1,17 @@
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.RazorEmails\obj\Debug\net5.0\AnaAna.RazorEmails.csproj.AssemblyReference.cache
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.RazorEmails\obj\Debug\net5.0\AnaAna.RazorEmails.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.RazorEmails\obj\Debug\net5.0\AnaAna.RazorEmails.AssemblyInfoInputs.cache
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.RazorEmails\obj\Debug\net5.0\AnaAna.RazorEmails.AssemblyInfo.cs
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.RazorEmails\obj\Debug\net5.0\AnaAna.RazorEmails.csproj.CoreCompileInputs.cache
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.RazorEmails\obj\Debug\net5.0\scopedcss\bundle\AnaAna.RazorEmails.styles.css
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.RazorEmails\obj\Debug\net5.0\staticwebassets\AnaAna.RazorEmails.StaticWebAssets.Manifest.cache
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.RazorEmails\obj\Debug\net5.0\AnaAna.RazorEmails.TagHelpers.input.cache
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.RazorEmails\obj\Debug\net5.0\AnaAna.RazorEmails.TagHelpers.output.cache
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.RazorEmails\obj\Debug\net5.0\AnaAna.RazorEmails.RazorCoreGenerate.cache
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.RazorEmails\obj\Debug\net5.0\Razor\Views\Emails\CreatePoll\CreatePollEmail.cshtml.g.cs
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.RazorEmails\obj\Debug\net5.0\Razor\Views\Shared\EmailLayout.cshtml.g.cs
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.RazorEmails\obj\Debug\net5.0\AnaAna.RazorEmails.RazorTargetAssemblyInfo.cache
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.RazorEmails\obj\Debug\net5.0\AnaAna.RazorEmails.RazorTargetAssemblyInfo.cs
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.RazorEmails\obj\Debug\net5.0\AnaAna.RazorEmails.dll
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.RazorEmails\obj\Debug\net5.0\ref\AnaAna.RazorEmails.dll
+C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna.RazorEmails\obj\Debug\net5.0\AnaAna.RazorEmails.pdb

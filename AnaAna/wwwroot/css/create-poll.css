@@ -1,0 +1,13 @@
+﻿.grass {
+    background-color: #6FA43F;
+    width: 1400px;
+    height: 500px;
+    position: absolute;
+    border-radius: 50%;
+    bottom: -50%;
+    right: -30%; 
+    z-index: 0; 
+}
+.create-form{
+    min-height: 600px; 
+}

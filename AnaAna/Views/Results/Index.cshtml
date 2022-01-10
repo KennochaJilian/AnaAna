@@ -1,18 +1,37 @@
 ﻿@using AnaAna.Services.ViewModels
 
 @model ResultViewModel;
-
-<h1> @Model.PollTitle </h1>
-<p> @Model.PollDescription </p>
-<p> @Model.PollStartedAt </p>
-<p> @Model.PollEndedAt </p>
-
-@foreach (var choice in Model.PollChoices)
-{
-    <p> @choice.Label</p>
+@section Styles {
+<link rel="stylesheet" asp-append-version="true" href="~/css/retrieve.css" />
 }
 
-<div>
+<h1> @Model.PollTitle </h1>
+<p class="text-center mb-4"> @Model.PollDescription</p>
+<section class="ana-ana-container ana-ana-styled-container result-container">
+    <div class="d-flex justify-content-around">
+        <div>
+            <p> Se termine le @Model.PollEndedAt</p>
+            <div>
+                 <p> <span class="labels-poll"> Catégorie : </span> @Model.PollCategoryName</p>
+                <p> <span class="labels-poll"> Nombre de votes : </span> @Model.NbVoted</p>
+            </div>
+        </div>
+        <div>
+            <p>Créé le @Model.PollStartedAt</p>
+            <div>
+                <p>
+                    <a class="btn btn-result" href="~/Polls/Retrieve/@Model.PollId"> Voir le sondage </a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="mt-3">
+        <p class="text-center title-result"> Résulats du sondage :</p>
         <input id="pollId" type="hidden" name="pollId" value="@Model.PollId">
-        <canvas id="result"></canvas>
-</div>
+        <div id="canvas-poll">
+            <canvas height="300" width="400" id="result"></canvas>
+        </div>
+    </div>
+    <div class="poll-egg"></div>
+</section>
+
