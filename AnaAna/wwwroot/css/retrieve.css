@@ -27,7 +27,7 @@
     }
 
 .poll-form {
-    min-height: 420px;
+    min-height: 480px;
     z-index: 2;
 }
 .poll-form input[type="submit"]{

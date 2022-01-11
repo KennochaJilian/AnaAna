@@ -8,7 +8,7 @@ function makeRequest(pollId) {
         return false;
     }
 
-    httpRequest.open('GET', `https://localhost:5001/Polls/Desactivate?pollId=${pollId}`);
+    httpRequest.open('GET', `https://anaanaccicampus.azurewebsites.net/Polls/Desactivate?pollId=${pollId}`);
     httpRequest.onreadystatechange = alertContents;
     httpRequest.send();
 }

@@ -14,6 +14,7 @@ namespace AnaAna.Services.ViewModels
         [Display(Name = "Nom du sondage")]
         public string Title { get; set; }
         [Required]
+        [DisplayFormat(DataFormatString = "{0:dd / MM / yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Date de fin")]
         public DateTime EndedAt { get; set; }
 

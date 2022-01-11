@@ -29,7 +29,20 @@ let data = {
 const config = {
     type: 'bar',
     data: data,
-
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                ticks: {
+                    // For a category axis, the val is the index so the lookup via getLabelForValue is needed
+                    callback: function (val, index) {
+                        // Hide the label of every 2nd dataset
+                        return index % 5 === 0 ? this.getLabelForValue(val) : '';
+                    },
+                }
+            }
+        }
+    },
 };
 
 function getArrayOfChoicesColors (countChoices){
@@ -52,7 +65,7 @@ window.addEventListener("DOMContentLoaded", () => {
             return false;
         }
         httpRequest.onreadystatechange = alertContents;
-        httpRequest.open('GET', `https://localhost:5001/Results/Charts?pollId=${pollId}`);
+        httpRequest.open('GET', `https://anaanaccicampus.azurewebsites.net/Results/Charts?pollId=${pollId}`);
         httpRequest.send();
     }
 

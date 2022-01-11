@@ -14,6 +14,7 @@
     <ActiveDebugProfile>AnaAna</ActiveDebugProfile>
     <Area_SelectedScaffolderID>IdentityScaffolder</Area_SelectedScaffolderID>
     <Area_SelectedScaffolderCategoryPath>root/Identity</Area_SelectedScaffolderCategoryPath>
+    <NameOfLastUsedPublishProfile>C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna\Properties\PublishProfiles\AnaAnaCCICampus - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>

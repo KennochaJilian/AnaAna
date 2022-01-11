@@ -63,7 +63,7 @@ namespace AnaAna.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
 
             [Required]
-            [EmailAddress]
+            [DataType(DataType.Text)]
             [Display(Name = "Nom de l'utilisateur")]
             public string Name { get; set; }
         }
