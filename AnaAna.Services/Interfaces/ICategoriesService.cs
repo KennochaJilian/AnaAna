@@ -10,8 +10,6 @@ namespace AnaAna.Services.Interfaces
 {
     public interface ICategoriesService
     {
-        Task<List<CategoriesIndexViewModel>> GetAllAsync();
-        Task CreateCategoryAsync(AddCategoryViewModel category);
         Task<List<Category>> GetAllNoVMAsync(); 
 
         Task <Category> GetOneByIdNoVMAsync(int id);

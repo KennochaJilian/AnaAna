@@ -70,3 +70,12 @@
     font-size : 24px; 
     margin-bottom:  20px
 }
+#openModal{
+    display: none;
+}
+#toat-disable-poll{
+    position: fixed; 
+    top:10px; 
+    right:10px;
+
+}

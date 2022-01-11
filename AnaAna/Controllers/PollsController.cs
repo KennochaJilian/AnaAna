@@ -67,13 +67,14 @@ namespace AnaAna.Controllers
             var newPoll = await _pollsService.CreatePollAsync(model, choices);
             _emailsService.PrepareAndSendCreatingPollEmailAsync(newPoll);
 
-            return Redirect($"Retrieve/{newPoll.Id}");
+            return Redirect($"Retrieve/{newPoll.Id}?create=true");
         }
 
         [HttpGet]
-        public async Task<IActionResult> Retrieve(string id)
+        public async Task<IActionResult> Retrieve(string id, [FromQuery(Name = "create")] string afterCreate )
         {
             var data = await _pollsService.GetOneByIdAsync(Guid.Parse(id));
+            ViewData["fromCreate"] = null;
             if (data.IsDisabled)
             {
                 return Redirect($"~/Results/index?pollId={id}");
@@ -86,6 +87,11 @@ namespace AnaAna.Controllers
             {
                 ViewData["mode"] = "CreateResult";
             }
+            if(afterCreate != null)
+            {
+                ViewData["fromCreate"] = "ok";
+            }
+
             return View(data);
 
         }

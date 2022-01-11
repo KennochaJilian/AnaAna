@@ -26,7 +26,7 @@
                 </div>
                 <div class="form-group">
                     <label> Categorie </label> <br />
-                    <select  class="form-control" asp-for="CategoryId">
+                    <select class="form-control" asp-for="CategoryId">
                         @foreach (Category category in Model.Categories)
                         {
                             <option value="@category.Id"> @category.Name</option>
@@ -53,10 +53,15 @@
                     <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label> Choix </label> <br />
-                    <div id="choices">
-                        <input type="hidden" class="choices-input form-control" id="choice-model" name="Choices" />
-                        <div id="add-choice-button" onclick="addChoice()" class="btn btn-primary"> Ajouter un choix </div>
+                    <label class="position-relative">
+                        Choix
+                        <i class="fa fa-plus i-colored add-mail-i" id="addInputButton" onclick="addChoice()"></i>
+                    </label> <br />
+                    <div id="choices-container">
+                        <div class="choices-input" id="choice-model">
+                            <input type="text" class="choices-input form-control" name="Choices" />
+                            <i class="fa fa-times i-colored remove-choice-icone" onclick="removeChoice(this)"></i>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -11,3 +11,23 @@
 .create-form{
     min-height: 600px; 
 }
+#addInputButton {
+    color: #FFECA5; 
+    position: absolute; 
+    top: -5px;
+    right: -20px; 
+    font-size : 20px;
+    cursor: pointer;
+}
+
+.choices-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.remove-choice-icone{
+    cursor : pointer; 
+    color : red; 
+    font-size: 20px;
+    margin-left: 5px
+}

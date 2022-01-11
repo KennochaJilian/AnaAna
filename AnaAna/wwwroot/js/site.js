@@ -4,16 +4,18 @@
 // Write your JavaScript code.
 
 const addChoice = () => {
-    let containterChoice = document.getElementById("choices");
-    let button = document.getElementById("add-choice-button"); 
+    let containterChoice = document.getElementById("choices-container");
     let newInput = document.getElementById("choice-model").cloneNode(true);
-    newInput.type = "text";
-    containterChoice.insertBefore(newInput, button);
+    containterChoice.appendChild(newInput);
 }
 
-$(function () {
-    $('[data-toggle="popover"]').popover()
-})
+const removeChoice = (element) => {
+    element.parentNode.remove(); 
+}
+
+
+
+
 
 window.addEventListener("DOMContentLoaded", () => {
     let selectorCategory = document.getElementById("selector-category");
@@ -27,6 +29,29 @@ window.addEventListener("DOMContentLoaded", () => {
           window.location.href = url
         })
     }
+
+    
+    let openModalButton = document.getElementById("openModal");
+
+    if (openModalButton) {
+        let finishModal = new bootstrap.Modal(document.getElementById('modalCreate'));
+        openModalButton.click(); 
+    }
+
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        const popoverId = popoverTriggerEl.attributes['data-content-id'];
+        if (popoverId) {
+            const contentEl = popoverTriggerEl.attributes['data-bs-content'].value;
+            return new bootstrap.Popover(popoverTriggerEl, {
+                html: true,
+                content: '<span>' + contentEl + '</span>',
+                trigger: "hover",
+            });
+        } else {//do something else cause data-content-id isn't there.
+        }
+    })
+
 
 
 

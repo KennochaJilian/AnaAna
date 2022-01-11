@@ -164,8 +164,6 @@ C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna\bin\Debug\net5.0\M
 C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna\bin\Debug\net5.0\System.IO.Pipelines.dll
 C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna\bin\Debug\net5.0\AnaAna.Services.dll
 C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna\bin\Debug\net5.0\AnaAna.Services.pdb
-C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna\obj\Debug\net5.0\Razor\Views\Categories\Index.cshtml.g.cs
-C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna\obj\Debug\net5.0\Razor\Views\Categories\Create.cshtml.g.cs
 C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna\obj\Debug\net5.0\Razor\Views\Polls\Create.cshtml.g.cs
 C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\codin\Documents\Projets CCI\C#-ASP-net\AnaAna\AnaAna\bin\Debug\net5.0\Microsoft.Extensions.Logging.dll

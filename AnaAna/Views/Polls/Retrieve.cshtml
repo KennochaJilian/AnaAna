@@ -7,7 +7,10 @@
 <link rel="stylesheet" asp-append-version="true" href="~/css/retrieve.css" />
 }
 
-
+@{
+    
+    ViewData["Title"] = @Model.Title;
+}
 
 
 <h1> @Model.Title </h1>
@@ -24,12 +27,12 @@
         <div>
             <p>Créé le @Model.StartedAd</p>
             <div>
-                <p> 
+                <p>
                     <a class="btn btn-result" href="~/Results/index?pollId=@Model.Id"> Voir les résultats </a>
                 </p>
                 @if (Model.userIsCreator && !Model.IsDisabled)
                 {
-                    <div class="btn btn-primary w-100" onclick="desactivatePoll()"> Clôturer le sondage </div>
+                    <button id="btn-disable-poll" class="btn btn-primary w-100" onclick="desactivatePoll(this)"> Clôturer le sondage </button>
                 }
 
             </div>
@@ -112,23 +115,22 @@
                 @if (Model.UserAlreadyVoted)
                 {
                     <div class=" form-group d-flex justify-content-center">
-                        <input type="submit" value="Modifier mon vote !" class="btn btn-primary" />
+                        <input id="button-submit-poll" type="submit" value="Modifier mon vote !" class="btn btn-primary" />
                     </div>
                 }
                 else
                 {
                     <div class=" form-group d-flex justify-content-center">
-                        <input type="submit" value="Voter" class="btn btn-primary" />
+                        <input id="button-submit-poll" type="submit" value="Voter" class="btn btn-primary" />
                     </div>
                 }
 
             }
             else
             {
-                <div class=" form-group d-flex justify-content-center">
+                <div class="form-group d-flex justify-content-center" data-bs-toggle="popover" title="Vous devez vous connecter afin de participer au sondage !">
                     <input type="submit" value="Voter" class="btn btn-primary" disabled />
                 </div>
-
             }
         </form>
     </div>
@@ -136,4 +138,36 @@
     <div class="poll-egg"> </div>
 
 </section>
+
+@if(ViewData["fromCreate"] != null) {
+<div class="modal" id="modalCreate" tabindex="-1" aria-labelledby="finish-modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="finish-modal">Inviter des participants à votre sondage</h5>
+                <button type="button" class="btn-primary" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p> Félicitations votre sondage a bien été créé ! </p>
+                <p> Vous pouvez dès à présent partager ce lien à tous vos partcipants !</p>
+                <a class="text-center" href="~/Polls/Retrieve/@Model.Id"> Lien vers le sondage </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+<button id="openModal" data-bs-toggle="modal" data-bs-target="#modalCreate"> Coucou </button>
+
+}
+
+<div id="toat-disable-poll" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-header">
+<p> Sondage desactivé ! </p>
+  </div>
+  <div class="toast-body">
+    Le sondage a bien été désactivé !
+  </div>
+</div>
+
+
 

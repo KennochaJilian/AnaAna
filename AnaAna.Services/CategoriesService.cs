@@ -24,29 +24,6 @@ namespace AnaAna.Services
             _repo = repo;
         }
 
-        public async Task CreateCategoryAsync(AddCategoryViewModel category)
-        {
-            var NewCategory = new Category(); 
-            NewCategory.Name = category.Name;
-            await _repo.AddAsync(NewCategory); 
-
-        }
-
-        public async Task<List<CategoriesIndexViewModel>> GetAllAsync()
-        {
-            var categories = await _repo.GetAllAsync();
-            
-
-            var enumerable = categories.Select(category => new CategoriesIndexViewModel()
-            {
-                Name= category.Name,
-                Id= category.Id
-
-            });
-
-            return enumerable.ToList();
-        }
-
         public async Task<List<Category>> GetAllNoVMAsync()
         {
             var categories = await _repo.GetAllAsync();
