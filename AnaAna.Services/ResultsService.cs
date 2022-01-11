@@ -81,7 +81,8 @@ namespace AnaAna.Services
                 PollStartedAt = poll.StartedAt,
                 PollTitle = poll.Title,
                 NbVoted = nbVoted, 
-                PollCategoryName = poll.Category.Name
+                PollCategoryName = poll.Category.Name,
+                PollIsDisabled = poll.IsDisabled,
 
             };
 

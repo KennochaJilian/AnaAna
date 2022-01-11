@@ -18,7 +18,14 @@
 <section class="ana-ana-container ana-ana-styled-container ">
     <div class="d-flex justify-content-around">
         <div>
-            <p> Se termine le @Model.EndedAt</p>
+            @if(Model.IsDisabled)
+            {
+                <p> S'est terminé le @Model.EndedAt.ToString("dd/MM/yyyy")</p>
+            } else
+            {
+            <p> Se termine le @Model.EndedAt.ToString("dd/MM/yyyy")</p>
+                
+            }
             <div>
                 <p> <span class="labels-poll"> Catégorie : </span> @Model.Category.Name</p>
                 <p> <span class="labels-poll"> Nombre de votes : </span> @Model.nbVoted</p>
@@ -40,7 +47,7 @@
     </div>
 
     <div class="poll-form-container">
-        <form asp-action=@ViewData["mode"] class="d-flex flex-column justify-content-between poll-form">
+        <form asp-action=@ViewData["mode"] asp-controller="Results" class="d-flex flex-column justify-content-between poll-form">
 
             <input id="pollId" type="hidden" name="pollId" value="@Model.Id">
             <div>
@@ -128,7 +135,8 @@
             }
             else
             {
-                <div class="form-group d-flex justify-content-center" data-bs-toggle="popover" title="Vous devez vous connecter afin de participer au sondage !">
+                var titlePopover = Model.IsDisabled ? "Le sondage a été désactivé " : "Vous devez vous connecter afin de participer au sondage !"; 
+                <div class="form-group d-flex justify-content-center" data-bs-toggle="popover" title="@titlePopover">
                     <input type="submit" value="Voter" class="btn btn-primary" disabled />
                 </div>
             }

@@ -75,10 +75,7 @@ namespace AnaAna.Controllers
         {
             var data = await _pollsService.GetOneByIdAsync(Guid.Parse(id));
             ViewData["fromCreate"] = null;
-            if (data.IsDisabled)
-            {
-                return Redirect($"~/Results/index?pollId={id}");
-            }
+
             if (data.UserAlreadyVoted)
             {
                 ViewData["mode"] = "EditResult";
@@ -96,29 +93,7 @@ namespace AnaAna.Controllers
 
         }
 
-        [HttpPost]
-        public async Task<IActionResult> CreateResult(IFormCollection collection)
-        {
 
-
-
-            await _resultsService.CreateResultAsync(Guid.Parse(collection["pollId"]), collection["choicesSelected"]);
-
-
-            return Redirect($"~/Results/index?pollId={collection["pollId"]}");
-
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> EditResult(IFormCollection collection)
-        {
-
-            await _resultsService.EditResultAsync(Guid.Parse(collection["pollId"]), collection["choicesSelected"]);
-            _emailsService.SendEmail("tassa780@gmail.com", "Je suis un test", "<p> Je suis un test </p>"); 
-
-            return Redirect($"~/Results/index?pollId={collection["pollId"]}");
-
-        }
 
         [HttpGet]
         public async Task<IActionResult> Desactivate([FromQuery(Name = "pollId")] string pollId)

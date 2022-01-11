@@ -1,6 +1,7 @@
 ﻿using AnaAna.Data.Models;
 using AnaAna.Services.Interfaces;
 using AnaAna.Services.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -28,6 +29,29 @@ namespace AnaAna.Controllers
             var currentPoll = await _pollsService.GetOneByIdAsyncNoVM(Guid.Parse(pollId)); 
             var charts = _service.getResultsChartsByPollIdAsync(currentPoll); 
             return Ok(charts.Result); 
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateResult(IFormCollection collection)
+        {
+
+
+
+            await _service.CreateResultAsync(Guid.Parse(collection["pollId"]), collection["choicesSelected"]);
+
+
+            return Redirect($"~/Results/index?pollId={collection["pollId"]}");
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditResult(IFormCollection collection)
+        {
+
+            await _service.EditResultAsync(Guid.Parse(collection["pollId"]), collection["choicesSelected"]);
+
+            return Redirect($"~/Results/index?pollId={collection["pollId"]}");
+
         }
     }
 }

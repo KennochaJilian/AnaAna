@@ -27,7 +27,7 @@ let data = {
 };
 
 const config = {
-    type: 'pie',
+    type: 'bar',
     data: data,
 
 };
@@ -61,7 +61,7 @@ window.addEventListener("DOMContentLoaded", () => {
             if (httpRequest.status === 200) {
                 results = JSON.parse(httpRequest.responseText);
                 data.labels = results.labels;
-                data.datasets[0].data = results.countChoices;
+                data.datasets[0].data = results.countChoices.sort(function (a, b) { return b - a });
                 data.datasets[0].label = results.pollTitle;
                 data.datasets[0].backgroundColor = getArrayOfChoicesColors(results.countChoices.length);
 

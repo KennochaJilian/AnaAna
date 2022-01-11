@@ -5,14 +5,25 @@
 <link rel="stylesheet" asp-append-version="true" href="~/css/retrieve.css" />
 }
 
+@{
+    var categorySelected = ViewData["categorySelected"];
+    ViewData["Title"] = @Model.PollTitle;
+}
+
 <h1> @Model.PollTitle </h1>
 <p class="text-center mb-4"> @Model.PollDescription</p>
 <section class="ana-ana-container ana-ana-styled-container result-container">
     <div class="d-flex justify-content-around">
         <div>
-            <p> Se termine le @Model.PollEndedAt</p>
+            @if(@Model.PollIsDisabled) {
+            <p> S'est terminé le @Model.PollEndedAt.ToString("dd/MM/yyyy")</p>
+
+            } else {
+            <p> Se termine le @Model.PollEndedAt.ToString("dd/MM/yyyy")</p>
+
+            }
             <div>
-                 <p> <span class="labels-poll"> Catégorie : </span> @Model.PollCategoryName</p>
+                <p> <span class="labels-poll"> Catégorie : </span> @Model.PollCategoryName</p>
                 <p> <span class="labels-poll"> Nombre de votes : </span> @Model.NbVoted</p>
             </div>
         </div>

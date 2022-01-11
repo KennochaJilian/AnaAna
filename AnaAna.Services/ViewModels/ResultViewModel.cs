@@ -17,6 +17,7 @@ namespace AnaAna.Services.ViewModels
         public string PollDescription { get; set; }
         public int NbVoted { get; set; }
         public string PollCategoryName { get; set; }
+        public bool PollIsDisabled { get; set; }
 
 
     }
