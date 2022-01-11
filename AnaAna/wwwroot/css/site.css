@@ -164,3 +164,8 @@ h1 {
     border-radius: 44px;
     padding: 0.375rem 20px;
 }
+#toat-disable-poll {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}

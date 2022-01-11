@@ -30,7 +30,7 @@
                 <th>  
                     @if (!poll.IsDisabled)
                     {
-                        <div class="btn btn-primary w-100" onclick="desactivatePoll()"> Clôturer le sondage </div>
+                        <button id="btn-disable-poll-@poll.Id" class="btn btn-primary w-100" onclick="desactivatePoll('@poll.Id')"> Clôturer le sondage </button>
                     } else
                     {
                         <p> Sondage déjà cloturé </p>
@@ -82,5 +82,12 @@
 
 </table>
 
-
+<div id="toat-disable-poll" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-header">
+<p> Sondage desactivé ! </p>
+  </div>
+  <div class="toast-body">
+    Le sondage a bien été désactivé !
+  </div>
+</div>
 

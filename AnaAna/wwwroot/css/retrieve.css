@@ -73,9 +73,3 @@
 #openModal{
     display: none;
 }
-#toat-disable-poll{
-    position: fixed; 
-    top:10px; 
-    right:10px;
-
-}

@@ -17,10 +17,10 @@
 </p>
 
 <br />
-@await Html.PartialAsync("EmailButton", new EmailButtonViewModel("Résultats", $"~/Polls/Retrieve/{@Model.poll.Id}")); 
+@await Html.PartialAsync("EmailButton", new EmailButtonViewModel("Voir le sondage", $"~/Polls/Retrieve/{@Model.poll.Id}")) 
 
 <br/>
-@await Html.PartialAsync("EmailButton", new EmailButtonViewModel("Résultats", $"~/Results/index?pollId={@Model.poll.Id}")); 
+@await Html.PartialAsync("EmailButton", new EmailButtonViewModel("Voir les résultats", $"~/Results/index?pollId={@Model.poll.Id}"))
 
 <br/>
 

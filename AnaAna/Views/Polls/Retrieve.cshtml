@@ -39,7 +39,7 @@
                 </p>
                 @if (Model.userIsCreator && !Model.IsDisabled)
                 {
-                    <button id="btn-disable-poll" class="btn btn-primary w-100" onclick="desactivatePoll(this)"> Clôturer le sondage </button>
+                    <button id="btn-disable-poll-@Model.Id" class="btn btn-primary w-100" onclick="desactivatePoll('@Model.Id')"> Clôturer le sondage </button>
                 }
 
             </div>

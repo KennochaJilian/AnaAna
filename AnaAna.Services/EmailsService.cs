@@ -28,7 +28,7 @@ namespace AnaAna.Services
             message.Body = htmlMessage;
             message.BodyEncoding = Encoding.UTF8;
             message.IsBodyHtml = true;
-            SmtpClient client = new SmtpClient("smtp.office365.com", 587); //Gmail smtp
+            SmtpClient client = new SmtpClient("smtp.office365.com", 587);
             System.Net.NetworkCredential basicCredential1 = new
             System.Net.NetworkCredential(Configuration["ConnectionEmail:emailAdress"], Configuration["ConnectionEmail:emailPassword"]);
             client.EnableSsl = true;

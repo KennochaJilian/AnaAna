@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace AnaAna.Controllers
@@ -16,16 +17,19 @@ namespace AnaAna.Controllers
         private readonly IPollsService _pollsService;
         private readonly IResultsService _resultsService;
         private readonly IEmailsService _emailsService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
         public PollsController(
             ICategoriesService CategorieService,
             IPollsService service,
             IResultsService resultsService,
-            IEmailsService emailsService)
+            IEmailsService emailsService,
+            IHttpContextAccessor httpContextAccessor)
         {
             _categoriesService = CategorieService;
             _pollsService = service;
             _resultsService = resultsService;
             _emailsService = emailsService;
+            _httpContextAccessor = httpContextAccessor;
 
         }
         public async Task<IActionResult> Index([FromQuery(Name = "category")] string queryCategoryName, string categoryName, int page = 1)
@@ -98,6 +102,13 @@ namespace AnaAna.Controllers
         [HttpGet]
         public async Task<IActionResult> Desactivate([FromQuery(Name = "pollId")] string pollId)
         {
+            var userId = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var currentPoll = await _pollsService.GetOneByIdAsyncNoVM(Guid.Parse(pollId)); 
+
+            if(Guid.Parse(userId) != currentPoll.CreatedBy.Id )
+            {
+                return Unauthorized();
+            }
 
             await _pollsService.Update<bool>(Guid.Parse(pollId), "IsDisabled", true);
             await _pollsService.Update<DateTime>(Guid.Parse(pollId), "EndedAt", DateTime.Now);
